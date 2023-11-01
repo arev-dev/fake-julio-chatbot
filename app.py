@@ -41,7 +41,7 @@ def query():
 
 @app.route('/train')
 def train():
-    return jsonify({"data":"jijija"})
+    return jsonify("Trained jiji")
 
 @app.route('/')
 def index():
@@ -64,7 +64,7 @@ def makeResponse(query):
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host="0.0.0.0")
 
 
 
