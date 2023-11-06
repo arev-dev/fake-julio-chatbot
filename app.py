@@ -48,10 +48,33 @@ def index():
     return "ESTE ES EL INDEX"
 
 def makeResponse(query):
+    responses = []
     new_chat = chat()
-    random.shuffle(possible_responses)
-    new_chat.chat_response = random.choice(possible_responses)
+    # random.shuffle(possible_responses)
+    # new_chat.chat_response = random.choice(possible_responses)
+    r = ""
+    if "Hola" in query:
+        responses.append("¡Hola! ¿En qué puedo ayudarte hoy? 😊")
+        responses.append("¡Hola, Soy Julio la Capibara! Asistente de ESFE/ Agape, ¿En qué te puedo ayudar hoy?")
+    elif "que sabes?" in query:
+        responses.append("Me han capacitado para poder ayudarte con cualquier proceso académico en ESFE 😍")
+    elif "que necesito para aperturar mis horas sociales?" in query:
+        responses.append("¡Necesitas pagar $5 en caso de que no seas becado! 👋🏻")
+    elif "te odio" in query:
+        responses.append("Este mensaje y esta cuenta serán reportados con coordinación.")
+    else:
+        responses.append("¡Encantado de ayudarte! 🤝🏻")
+    
+    random.shuffle(responses)  
+            
+    new_chat.chat_response = random.choice(responses)
     new_chat.question = query
+    new_chat.offensive_message = "Este mensaje y esta cuenta serán reportados con coordinación." in new_chat.chat_response
+    
+    
+        
+    
+    
     data = {
         "chat_response": new_chat.chat_response,
         "question": new_chat.question,
